@@ -1,0 +1,37 @@
+/* .pagination {
+  display: flex;
+  list-style-type: none;
+  padding: 0;
+}
+
+.pagination li {
+  margin: 0 5px;
+}
+
+.pagination li a {
+  cursor: pointer;
+  padding: 8px 16px;
+  border: 1px solid #ddd;
+  color: #000;
+  text-decoration: none;
+}
+
+.pagination li a:hover {
+  background-color: #ddd;
+}
+
+.pagination .active a {
+  background-color: #007bff;
+  color: white;
+  border: 1px solid #007bff;
+}
+
+li.previous a,
+li.next a {
+  padding: 0;
+  border: none;
+}
+li img {
+  width: 14px;
+  height: 14px;
+} */
