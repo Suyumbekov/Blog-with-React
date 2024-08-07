@@ -2,7 +2,7 @@ import { useLoaderData } from "react-router-dom";
 import Markdown from "react-markdown";
 
 import imgUrl from "../assets/heart.svg";
-import Tags from "./Tags";
+import Tags from "../components/Tags";
 
 export default function DetailsPage() {
   const article = useLoaderData();

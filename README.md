@@ -8,6 +8,7 @@ This project aims to create a simple blog platform using React, focusing on auth
 
 - React
 - React Router
+- React Hook Form
 - TailwindCSS (for styling)
 - Fetch API (for making HTTP requests)
 - React Markdown (for rendering Markdown content)
