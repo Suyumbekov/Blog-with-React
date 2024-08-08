@@ -2,7 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
 import { useForm } from "react-hook-form";
 
-export default function SignIn({ setUser }) {
+export default function SignIn({ login }) {
   const navigate = useNavigate();
   const {
     register,
@@ -36,8 +36,7 @@ export default function SignIn({ setUser }) {
       })
       .then((res) => {
         console.log("success", res);
-        localStorage.setItem("user", JSON.stringify(res.user));
-        setUser(res.user);
+        login(res.user);
         navigate("/");
       })
       .catch((err) => {
@@ -118,5 +117,5 @@ export default function SignIn({ setUser }) {
 }
 
 SignIn.propTypes = {
-  setUser: PropTypes.func,
+  login: PropTypes.func,
 };
