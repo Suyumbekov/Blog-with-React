@@ -13,6 +13,8 @@ import SignIn from "./pages/SignIn";
 import DetailsPage, { articleDetailLoader } from "./pages/DetailsPage";
 import { useEffect, useState } from "react";
 import Profile from "./pages/Profile";
+import CreateArticle from "./pages/CreateArticle";
+import EditArticle, { articleEditLoader } from "./pages/EditArticle";
 
 function NavLayout({ user, logout }) {
   return (
@@ -50,12 +52,18 @@ function App() {
         <Route index element={<ArticlesList />} />
         <Route
           path="articles/:slug"
-          element={<DetailsPage />}
+          element={<DetailsPage user={user} />}
           loader={articleDetailLoader}
+        />
+        <Route
+          path="articles/:slug/edit"
+          element={<EditArticle user={user} />}
+          loader={articleEditLoader}
         />
         <Route path="sign-in" element={<SignIn login={login} />} />
         <Route path="sign-up" element={<SignUp login={login} />} />
         <Route path="profile" element={<Profile user={user} login={login} />} />
+        <Route path="new-article" element={<CreateArticle user={user} />} />
       </Route>
     )
   );

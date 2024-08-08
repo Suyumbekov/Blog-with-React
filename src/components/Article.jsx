@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import imgUrl from "../assets/heart.svg";
 // import avatar from "../assets/avatar.png";
 import Tags from "./Tags";
+import { format } from "date-fns";
 
 export default function Article({ article }) {
   return (
@@ -32,7 +33,9 @@ export default function Article({ article }) {
               <div className="name text-name text-lg">
                 {article.author.username}
               </div>
-              <div className="date text-tag text-xs">March 5, 2020</div>
+              <div className="date text-tag text-xs">
+                {format(new Date(article.updatedAt), "MMMM d, yyyy")}
+              </div>
             </div>
 
             <div className="avatar">

@@ -12,7 +12,7 @@ export default function Nav({ user, logout }) {
           {user ? (
             <div className="flex flex-row items-center">
               <Link
-                to="#"
+                to="new-article"
                 className="text-article text-sm px-[10px] py-[6px] border-[1px] border-article rounded-md mr-7"
               >
                 Create article

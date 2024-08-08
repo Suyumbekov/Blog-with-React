@@ -17,6 +17,7 @@ export default {
         highlight: "#F5222D",
         check: "#595959",
         article: "#52C41A",
+        confirm: "#D9D9D9",
       },
     },
   },
