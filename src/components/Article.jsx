@@ -2,11 +2,11 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
 import imgUrl from "../assets/heart.svg";
-// import avatar from "../assets/avatar.png";
+import like from "../assets/like.svg";
 import Tags from "./Tags";
 import { format } from "date-fns";
 
-export default function Article({ article }) {
+export default function Article({ article, handleLike }) {
   return (
     <div className="w-[500px] md:w-[800px] lg:w-[930px]  mb-[26px] bg-white pl-[19px] py-[15px] pr-[14px] rounded-md shadow-md">
       <div className="flex justify-between">
@@ -17,7 +17,19 @@ export default function Article({ article }) {
             </h2>
             <div className="flex flex-row self-start pt-[7px]">
               <span className="inline-block mr-1 ml-3">
-                <img src={imgUrl} />
+                {article.favorited ? (
+                  <img
+                    className="cursor-pointer"
+                    src={like}
+                    onClick={() => handleLike(article.slug, "DELETE")}
+                  />
+                ) : (
+                  <img
+                    className="cursor-pointer"
+                    src={imgUrl}
+                    onClick={() => handleLike(article.slug, "POST")}
+                  />
+                )}
               </span>
               <span className="inline-block text-counter text-xs">
                 {article.favoritesCount}
@@ -56,4 +68,5 @@ export default function Article({ article }) {
 
 Article.propTypes = {
   article: PropTypes.object,
+  handleLike: PropTypes.func,
 };

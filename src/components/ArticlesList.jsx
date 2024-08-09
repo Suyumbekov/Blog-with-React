@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
+import PropTypes from "prop-types";
 import Article from "./Article";
 import Pagination from "./Pagination";
 
 import img from "../assets/spinner.svg";
 
-export default function ArticlesList() {
+export default function ArticlesList({ user, handleLike, like }) {
   const [articles, setArticles] = useState([]);
   const [articlesCount, setArticlesCount] = useState(0);
   const [loading, setLoading] = useState(true);
@@ -13,7 +14,10 @@ export default function ArticlesList() {
   const [page, setPage] = useState(0);
 
   useEffect(() => {
-    fetch(`https://api.realworld.io/api/articles?limit=5&offset=${page * 5}`)
+    const headers = user ? { Authorization: `Token ${user.token}` } : {};
+    fetch(`https://api.realworld.io/api/articles?limit=5&offset=${page * 5}`, {
+      headers,
+    })
       .then((res) => res.json())
       .then((res) => {
         setArticlesCount(res.articlesCount);
@@ -24,7 +28,7 @@ export default function ArticlesList() {
         setError(error);
         setLoading(false);
       });
-  }, [page]);
+  }, [page, like, user]);
 
   if (loading) {
     return (
@@ -41,7 +45,7 @@ export default function ArticlesList() {
     <div className="container mx-auto">
       <main className="flex flex-col justify-center items-center">
         {articles.map((article, index) => (
-          <Article article={article} key={index} />
+          <Article article={article} key={index} handleLike={handleLike} />
         ))}
 
         <Pagination
@@ -52,3 +56,9 @@ export default function ArticlesList() {
     </div>
   );
 }
+
+ArticlesList.propTypes = {
+  user: PropTypes.object,
+  handleLike: PropTypes.func,
+  like: PropTypes.bool,
+};
